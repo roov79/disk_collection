@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand mr-3">Disk Collection App</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="#" class="nav-item nav-link active">Home</a>
+                    <a href="#" class="nav-item nav-link">Services</a>
+                    <a href="#" class="nav-item nav-link">About</a>
+                    <a href="#" class="nav-item nav-link">Contact</a>
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <a href="#" class="nav-item nav-link">Register</a>
+                    <a href="#" class="nav-item nav-link">Login</a>
+                </div>
+            </div>
+        </div>    
+    </nav>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Check out your Disk Collection</h1>
+            <p class="lead">This way you will always remember your disk collection and your favorite titles.</p>
+            <p><a href="" data-toggle="modal" data-target="#modal_add_form" class="btn btn-success btn-lg">Add a Disk</a></p>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog" id="modal_add_form">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Add a Disk</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/add_disk" method="POST" class="add_form">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <label for="title" class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" name="title" id="title">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="released_date" class="col-sm-2 col-form-label">Released Date</label>
+                            <div class="col-sm-10">
+                            <input type="date" class="form-control" name="released_date" id="released_date" value="{{today|date:'Y-m-d'}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="production" class="col-sm-2 col-form-label">Produced By</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" name="production" id="production">
+                            </div>
+                        </div>
+                        <fieldset class="form-group">
+                            <div class="row">
+                            <legend class="col-form-label col-sm-2 pt-0">Type</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type_of" id="gridRadios1" value="Movie" checked>
+                                    <label class="form-check-label" for="gridRadios1">Movie</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type_of" id="gridRadios2" value="TV Series">
+                                    <label class="form-check-label" for="gridRadios2">TV Series</label>
+                                </div>
+                            </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-group row">
+                            <div class="col-sm-2">Genres</div>
+                            <div class="col-sm-10">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="genres" value="Action">
+                                    <label class="form-check-label" for="inlineCheckbox1">Action</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="genres" value="Drama">
+                                    <label class="form-check-label" for="inlineCheckbox2">Drama</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="genres" value="Sci-Fi">
+                                    <label class="form-check-label" for="inlineCheckbox3">Sci-Fi</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="genres" value="Anime">
+                                    <label class="form-check-label" for="inlineCheckbox4">Anime</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        <div class="table-responsive"> 
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Title</th>
+                        <th>Released Year</th>
+                        <th>Production By</th>
+                        <th>Type</th>
+                        <th>Genres</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for disk in disks_list %}
+                    <tr>
+                        <td>{{ disk.title }}</td>
+                        <td>{{ disk.released_date }}</td>
+                        <td>{{ disk.production }}</td>
+                        <td>{{ disk.prod_type }}</td>
+                        <td>{{ disk.genres }}</td>
+                        <td><a href="/delete_disk/{{disk.id}}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+       
+        <hr>
+        
+        <footer>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Copyright &copy; 2020 Victor RO</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="#" class="text-dark">Terms of Use</a> 
+                    <span class="text-muted mx-2">|</span> 
+                    <a href="#" class="text-dark">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
