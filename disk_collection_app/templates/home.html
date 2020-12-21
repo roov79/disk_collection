@@ -133,7 +133,7 @@
                 <tbody>
                 {% for disk in disks_list %}
                     <tr>
-                        <td>{{ disk.title }}</td>
+                        <td><a href="/disk_info/{{disk.id}}">{{ disk.title }}</a></td>
                         <td>{{ disk.released_date }}</td>
                         <td>{{ disk.production }}</td>
                         <td>{{ disk.prod_type }}</td>

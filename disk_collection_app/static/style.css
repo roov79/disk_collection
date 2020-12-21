@@ -1,0 +1,11 @@
+.card{
+    width: 55%;
+    margin-top: 8%;
+    display: inline-block;
+}
+
+.img-thumbnail{
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+}

@@ -11,7 +11,7 @@ from django.utils.dateparse import parse_date
 
 class Disks(models.Model):
     title = models.CharField(max_length=150)
-    released_date = models.DateField(default=None)
+    released_date = models.DateField(null=True)
     production = models.CharField(max_length=50)
     prod_type = models.CharField(max_length=30)
     genres = models.CharField(max_length=255, default=None)
